@@ -1,0 +1,26 @@
+// OroIdentityServer
+// Copyright (C) 2026 Oscar Rojas
+// Licensed under the GNU AGPL v3.0 or later.
+// See the LICENSE file in the project root for details.
+
+namespace OroIdentityServer.Core.Models;
+
+public sealed class RoleName : BaseValueObject
+{
+    public string Value { get; private set; }
+    public RoleName(string value)
+    {
+        Value = value;
+    }
+
+    public static RoleName Create(string? value)
+    {
+        return new RoleName(value ?? string.Empty);
+    }
+
+    protected override IEnumerable<object?> GetEquatibilityComponents()
+    {
+        yield return Value;
+    }
+
+}

@@ -1,0 +1,18 @@
+@page "/protected"
+@layout MainLayout
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+
+<PageTitle>Protected</PageTitle>
+
+<h2>Protected Page</h2>
+
+<p>This is a protected page that requires authentication. Place any content here.</p>
+
+<AuthorizeView>
+    <Authorized>
+        <p>Secret content: Only authenticated users can see this.</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are not authorized to view this content.</p>
+    </NotAuthorized>
+</AuthorizeView>

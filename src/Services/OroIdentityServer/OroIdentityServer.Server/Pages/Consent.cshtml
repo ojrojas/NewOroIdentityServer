@@ -1,0 +1,21 @@
+@page
+@model ConsentModel
+@{
+    var userId = Model.UserId;
+    var clientId = Model.ClientId;
+    var scopes = Model.Scopes ?? string.Empty;
+}
+
+<h3>Application Consent</h3>
+<p>Application: @clientId</p>
+<p>Scopes: @scopes</p>
+<form method="post" action="/connect/consent">
+    <input type="hidden" name="UserId" value="@userId" />
+    <input type="hidden" name="ClientId" value="@clientId" />
+    <input type="hidden" name="Scopes" value="@scopes" />
+    <label>
+        Remember this choice: <input type="checkbox" name="Remember" value="true" />
+    </label>
+    <br />
+    <button type="submit">Allow</button>
+</form>

@@ -1,0 +1,33 @@
+@page "/userinfo"
+@layout MainLayout
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthStateProvider
+
+<PageTitle>User Info</PageTitle>
+
+<h2>User Info</h2>
+
+<AuthorizeView>
+    <Authorized>
+        @code {
+            private System.Security.Claims.ClaimsPrincipal? user;
+            protected override async Task OnInitializedAsync()
+            {
+                var st = await AuthStateProvider.GetAuthenticationStateAsync();
+                user = st.User;
+            }
+        }
+
+        @if (user != null && user.Identity?.IsAuthenticated == true)
+        {
+            <ul>
+                <li><b>Name:</b> @user.Identity.Name</li>
+                <li><b>Email:</b> @user.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</li>
+                <li><b>Authenticated:</b> @user.Identity.IsAuthenticated</li>
+            </ul>
+        }
+    </Authorized>
+    <NotAuthorized>
+        <p>You are not signed in. Please sign in to view user info.</p>
+    </NotAuthorized>
+</AuthorizeView>

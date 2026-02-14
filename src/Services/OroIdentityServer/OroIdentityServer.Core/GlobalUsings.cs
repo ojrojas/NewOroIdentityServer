@@ -1,0 +1,9 @@
+﻿global using OroKernel.Shared.Entities;
+global using OroKernel.Shared.Events;
+global using OroKernel.Shared.Interfaces;
+global using System.ComponentModel.DataAnnotations;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using OroIdentityServer.Core.Interfaces;
+global using OroIdentityServer.Core.Services;
+global using System.Diagnostics.CodeAnalysis;

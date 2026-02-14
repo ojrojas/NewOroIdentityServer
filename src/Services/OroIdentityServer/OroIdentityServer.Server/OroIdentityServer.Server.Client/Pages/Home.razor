@@ -1,0 +1,11 @@
+﻿@page "/"
+@layout MainLayout
+@attribute [Microsoft.AspNetCore.Authorization.AllowAnonymous]
+
+<PageTitle>Home</PageTitle>
+
+<h1>Welcome to Oro Identity Server Client</h1>
+
+<p>This is the public home page. You can navigate to <a href="/userinfo">User Info</a> (requires sign-in) or <a href="/protected">Protected</a> (requires authorization).</p>
+
+<p>If you are not signed in, try the interactive consent flow via the server endpoints.</p>

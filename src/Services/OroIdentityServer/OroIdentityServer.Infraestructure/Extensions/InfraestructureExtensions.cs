@@ -1,0 +1,34 @@
+// OroIdentityServer
+// Copyright (C) 2026 Oscar Rojas
+// Licensed under the GNU AGPL v3.0 or later.
+// See the LICENSE file in the project root for details.
+
+namespace OroIdentityServer.Infraestructure.Extensions;
+
+public static class InfraestructureExtensions
+{
+    public static void AddInfraestructureExtensions(this IHostApplicationBuilder builder, IConfiguration configuration)
+    {
+        var connectionDatabase = configuration.GetConnectionString("identitydb");
+        builder.Services.AddDbContext<OroIdentityAppContext>(options =>
+        {
+            options.UseNpgsql(connectionDatabase);  
+        });
+
+        builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+        builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+        builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+        builder.Services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
+        builder.Services.AddScoped<IIdentificationTypeRepository, IdentificationTypeRepository>();
+        builder.Services.AddScoped<ILoginHistoryRepository, LoginHistoryRepository>();
+        builder.Services.AddScoped<IRolesRepository, RolesRepository>();
+        builder.Services.AddScoped<IUserConsentRepository, UserConsentRepository>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IUserRolesRepository, UserRolesRepository>();
+        builder.Services.AddScoped<IUserSessionRepository, UserSessionRepository>();
+        builder.Services.AddScoped<ISecurityUserRepository, SecurityUserRepository>();
+       
+    }
+}

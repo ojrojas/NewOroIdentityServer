@@ -1,0 +1,39 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <header class="top-nav">
+        <div class="container">
+            <h1 class="brand">Oro Identity Server</h1>
+            <nav class="nav">
+                <NavLink href="/" class="nav-link" Match="NavLinkMatch.All">Home</NavLink>
+                <NavLink href="/userinfo" class="nav-link">User Info</NavLink>
+                <NavLink href="/protected" class="nav-link">Protected</NavLink>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content container">
+        @Body
+    </main>
+
+    <footer class="footer container">
+        <small>© OroIdentityServer</small>
+    </footer>
+
+    <div id="blazor-error-ui" data-nosnippet>
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+</div>
+
+<style>
+    .container { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+    .top-nav { background:#0b5; padding:12px 0; color:#033; }
+    .brand { display:inline-block; margin:0; font-size:1.2rem; }
+    .nav { display:inline-block; margin-left:24px; }
+    .nav-link { margin-right:12px; color:rgba(0,0,0,0.7); text-decoration:none; }
+    .nav-link.active { font-weight:600; color:#000; }
+    .content { padding:24px 0; }
+    .footer { padding:16px 0; color:#666; }
+</style>

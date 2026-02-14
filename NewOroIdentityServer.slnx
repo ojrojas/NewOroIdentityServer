@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AppHost/AppHost.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/" />
+  <Folder Name="/src/Services/OroIdentityServer/">
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Core.Tests/OroIdentityServer.Core.Tests.csproj" />
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Core/OroIdentityServer.Core.csproj" />
+      <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Infraestructure.Tests/OroIdentityServer.Infraestructure.Tests.csproj" />
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Infraestructure/OroIdentityServer.Infraestructure.csproj" />
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Application.Tests/OroIdentityServer.Application.Tests.csproj" />
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Application/OroIdentityServer.Application.csproj" />
+  </Folder>
+   <Folder Name="/src/Services/OroIdentityServer/OroIdentityServer.Server/">
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Server/OroIdentityServer.Server.Client/OroIdentityServer.Server.Client.csproj" />
+    <Project Path="src/Services/OroIdentityServer/OroIdentityServer.Server/OroIdentityServer.Server/OroIdentityServer.Server.csproj" />
+  </Folder>
+</Solution>
