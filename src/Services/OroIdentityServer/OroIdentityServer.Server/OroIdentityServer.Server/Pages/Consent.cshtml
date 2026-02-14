@@ -34,6 +34,7 @@
         {
             <div style="margin-bottom:12px;">Signed in as <strong>@Model.AuthenticatedUser.Email ?? Model.AuthenticatedUser.UserName</strong>
                 <form method="post" asp-page-handler="Logout" style="display:inline; margin-left:8px">
+                    <input type="hidden" name="__RequestVerificationToken" value="@Antiforgery.GetAndStoreTokens(HttpContext).RequestToken" />
                     <button class="btn btn-deny" type="submit">Sign out</button>
                 </form>
             </div>
@@ -43,32 +44,35 @@
         {
             <!-- Simple sign-in form that posts to the page handler to create the auth cookie -->
             <form method="post" asp-page-handler="Login" class="field">
+                <input type="hidden" name="__RequestVerificationToken" value="@Antiforgery.GetAndStoreTokens(HttpContext).RequestToken" />
                 <label for="login-subject">Sign in (email)</label>
                 <input id="login-subject" name="Subject" type="text" required placeholder="user@example.com" value="@Model.Subject" />
                 <div style="margin-top:8px"><button class="btn btn-approve" type="submit">Sign in</button></div>
             </form>
         }
+        else
+        {
+            <form method="post" asp-page-handler="Authorize">
+                @* Anti-forgery token for the page handler *@
+                <input type="hidden" name="__RequestVerificationToken" value="@Antiforgery.GetAndStoreTokens(HttpContext).RequestToken" />
 
-        <form method="post" asp-page-handler="Authorize">
-            @* Anti-forgery token for the page handler *@
-            <AntiforgeryToken />
-            
-            <input type="hidden" name="ApplicationId" value="@Model.ClientId" />
-            <input type="hidden" name="Scope" value="@Model.Scope" />
-            <input type="hidden" name="State" value="@Model.State" />
-            <input type="hidden" name="CodeChallenge" value="@Model.CodeChallenge" />
-            <input type="hidden" name="CodeChallengeMethod" value="@Model.CodeChallengeMethod" />
-            <input type="hidden" name="Nonce" value="@Model.Nonce" />
-            <input type="hidden" name="RedirectUri" value="@Model.RedirectUri" />
+                <input type="hidden" name="ApplicationId" value="@Model.ClientId" />
+                <input type="hidden" name="Scope" value="@Model.Scope" />
+                <input type="hidden" name="State" value="@Model.State" />
+                <input type="hidden" name="CodeChallenge" value="@Model.CodeChallenge" />
+                <input type="hidden" name="CodeChallengeMethod" value="@Model.CodeChallengeMethod" />
+                <input type="hidden" name="Nonce" value="@Model.Nonce" />
+                <input type="hidden" name="RedirectUri" value="@Model.RedirectUri" />
 
-            <div class="field">
-                <label for="subject">User (email)</label>
-                <input id="subject" name="Subject" type="text" required placeholder="user@example.com" value="@Model.Subject" />
-            </div>
+                <div class="field">
+                    <label for="subject">User (email)</label>
+                    <input id="subject" name="Subject" type="text" required placeholder="user@example.com" value="@Model.Subject" />
+                </div>
 
-            <div class="field">
-                <label><input type="checkbox" name="Remember" value="true" /> Remember this decision</label>
-            </div>
+                <div class="field">
+                    <label><input type="checkbox" name="Remember" value="true" /> Remember this decision</label>
+                </div>
+
 
             @if (Model.ErrorMessage != null)
             {
@@ -84,7 +88,8 @@
                 <button class="btn btn-approve" type="submit">Approve</button>
                 <a class="btn btn-deny" href="@Model.RedirectUri?error=access_denied&state=@Model.State">Deny</a>
             </div>
-        </form>
+            </form>
+        }
     </div>
 </body>
 </html>

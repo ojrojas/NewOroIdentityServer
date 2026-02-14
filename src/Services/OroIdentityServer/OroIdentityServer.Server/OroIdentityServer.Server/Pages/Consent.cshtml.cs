@@ -87,6 +87,12 @@ public class ConsentModel : PageModel
         return Redirect(Request.Path + Request.QueryString);
     }
 
+    // Synchronous handler fallback for forms that post to handler="Login"
+    public Task<IActionResult> OnPostLogin(CancellationToken cancellationToken)
+    {
+        return OnPostLoginAsync(cancellationToken);
+    }
+
     public async Task<IActionResult> OnPostLogoutAsync(CancellationToken cancellationToken)
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
