@@ -483,5 +483,6 @@ $RECYCLE.BIN/
 
 
 .nupkgs
+nupkgs/
 .github/oauth2.1-instructions.md
 signing_keys
