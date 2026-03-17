@@ -3,8 +3,8 @@
     <!-- Enable central package management,
     https://learn.microsoft.com/en-us/nuget/consume-packages/Central-Package-Management -->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <AspnetVersion>10.0.3</AspnetVersion>
-    <AspireVersion>13.1.1</AspireVersion>
+    <AspnetVersion>10.0.5</AspnetVersion>
+    <AspireVersion>13.1.2</AspireVersion>
     <OpenTelemetryVersion>1.14.0</OpenTelemetryVersion>
   </PropertyGroup>
   <ItemGroup>
